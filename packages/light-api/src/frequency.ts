@@ -13,15 +13,12 @@ export function onEvent (section: string, method: string, arg3: any[] | ApiRx, a
   const args = arg4 ? (arg3 as any[]) : [];
   const api = arg4 || (arg3 as ApiRx);
 
-  console.log('onEvent', args);
-
   // FIXME Find a way to not make multiple state_storageSubscribe if we have
   // multiple onEvents.
   return api.query.system.events().pipe(
     filter(x => !!x),
     // @ts-ignore Why is TS bitching here?
     filter(({ event, phase }: EventRecord) => {
-      console.log('event,phase=', event, phase);
       return phase.value && event.section === section && event.method === method;
     })
   );
