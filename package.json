@@ -28,6 +28,7 @@
     "prepackage": "yarn build",
     "prestart": "./scripts/prestart.sh",
     "start": "lerna exec yarn start --parallel",
+    "storybook": "cd packages/ui-components && yarn storybook",
     "test": "CI=true lerna run test --parallel"
   },
   "devDependencies": {
